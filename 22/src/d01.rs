@@ -1,8 +1,6 @@
 use crate::basics::*;
 
-const PATH: &str = "./input/01.txt";
-
-fn get_elf(lines: &mut Lines<BufReader<File>>) -> i32 {
+fn elf(lines: &mut Lines<BufReader<File>>) -> u32 {
     let mut sum = 0;
     for line in lines {
         let line = line.expect("Expected To Read Line");
@@ -10,48 +8,48 @@ fn get_elf(lines: &mut Lines<BufReader<File>>) -> i32 {
             break;
         }
         sum += line
-            .parse::<i32>()
+            .parse::<u32>()
             .expect("Expected Integer Compatible String");
     }
     sum
 }
 
-pub fn p1() -> i32 {
-    let mut lines = get_lines(PATH);
+pub fn p1() -> u32 {
+    let mut lines = lines(path(1));
     let mut max = 0;
-    let mut elf: i32;
+    let mut sum;
     loop {
-        elf = get_elf(&mut lines);
-        if elf == 0 {
+        sum = elf(&mut lines);
+        if sum == 0 {
             break max;
         }
-        if elf > max {
-            max = elf;
+        if sum > max {
+            max = sum;
         }
     }
 }
 
-pub fn p2() -> i32 {
-    let mut lines = get_lines(PATH);
+pub fn p2() -> u32 {
+    let mut lines = lines(path(1));
     let mut first = 0;
     let mut second = 0;
     let mut third = 0;
-    let mut elf: i32;
+    let mut sum;
 
     loop {
-        elf = get_elf(&mut lines);
-        if elf == 0 {
+        sum = elf(&mut lines);
+        if sum == 0 {
             break first + second + third;
         }
-        if elf >= first {
+        if sum >= first {
             third = second;
             second = first;
-            first = elf;
-        } else if elf >= second {
+            first = sum;
+        } else if sum >= second {
             third = second;
-            second = elf;
-        } else if elf >= third {
-            third = elf;
+            second = sum;
+        } else if sum >= third {
+            third = sum;
         }
     }
 }
