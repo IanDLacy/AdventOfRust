@@ -23,13 +23,12 @@ pub fn p1() -> i32 {
     loop {
         elf = get_elf(&mut lines);
         if elf == 0 {
-            break;
+            break max;
         }
         if elf > max {
-            max = elf
+            max = elf;
         }
     }
-    max
 }
 
 pub fn p2() -> i32 {
@@ -42,7 +41,7 @@ pub fn p2() -> i32 {
     loop {
         elf = get_elf(&mut lines);
         if elf == 0 {
-            break;
+            break first + second + third;
         }
         if elf >= first {
             third = second;
@@ -55,6 +54,4 @@ pub fn p2() -> i32 {
             third = elf;
         }
     }
-
-    first + second + third
 }
