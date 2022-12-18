@@ -1,4 +1,4 @@
-use crate::basics::*;
+use super::basics::*;
 
 fn elf(lines: &mut Lines<BufReader<File>>) -> u32 {
     let mut sum = 0;

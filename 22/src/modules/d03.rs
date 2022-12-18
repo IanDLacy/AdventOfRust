@@ -1,4 +1,4 @@
-use crate::basics::*;
+use super::basics::{lines, path};
 
 pub fn p1() -> u32 {
     let mut sum: u32 = 0;
