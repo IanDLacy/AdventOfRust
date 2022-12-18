@@ -8,8 +8,10 @@ use std::env;
 
 fn main() {
     match env::args().nth(1).unwrap_or_default().as_str() {
-        "commit" => {
-            commit();
+        "pc" | "cp" => {
+            git_add();
+            git_commit();
+            git_push();
         }
         "1" => {
             answer(d01::p1());

@@ -17,7 +17,7 @@ pub fn answer(answer: u32) -> usize {
         .expect("Expected To Write To Standard Out")
 }
 
-pub fn commit() {
+pub fn git_add() {
     Command::new("git")
         .arg("add")
         .arg(".")
@@ -25,12 +25,18 @@ pub fn commit() {
         .expect("Expected Command To Run")
         .wait()
         .expect("Expected To Wait For Command");
+}
+
+pub fn git_commit() {
     Command::new("git")
         .arg("commit")
         .spawn()
         .expect("Expected Command To Run")
         .wait()
         .expect("Expected To Wait For Command");
+}
+
+pub fn git_push() {
     Command::new("git")
         .arg("push")
         .spawn()
