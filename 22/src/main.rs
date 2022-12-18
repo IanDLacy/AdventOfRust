@@ -5,9 +5,17 @@ use std::env;
 
 fn main() {
     match env::args().nth(1).unwrap_or_default().as_str() {
-        "go" => {
+        "b" => {
             commands::cargo_build();
-            commands::git_add();
+        }
+        "c" => {
+            commands::git_commit();
+        }
+        "p" => {
+            commands::git_push();
+        }
+        "bcp" => {
+            commands::cargo_build();
             commands::git_commit();
             commands::git_push();
         }

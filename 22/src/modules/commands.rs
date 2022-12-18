@@ -17,7 +17,7 @@ pub fn cargo_build() {
         .expect("Expected To Wait For Command");
 }
 
-pub fn git_add() {
+pub fn git_commit() {
     Command::new("git")
         .arg("add")
         .arg(".")
@@ -25,9 +25,6 @@ pub fn git_add() {
         .expect("Expected Command To Run")
         .wait()
         .expect("Expected To Wait For Command");
-}
-
-pub fn git_commit() {
     Command::new("git")
         .arg("commit")
         .spawn()
