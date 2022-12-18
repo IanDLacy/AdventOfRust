@@ -8,7 +8,8 @@ use std::env;
 
 fn main() {
     match env::args().nth(1).unwrap_or_default().as_str() {
-        "acp" => {
+        "go" => {
+            cargo_build();
             git_add();
             git_commit();
             git_push();

@@ -17,6 +17,15 @@ pub fn answer(answer: u32) -> usize {
         .expect("Expected To Write To Standard Out")
 }
 
+pub fn cargo_build() {
+    Command::new("cargo")
+        .arg("build")
+        .spawn()
+        .expect("Expected Command To Run")
+        .wait()
+        .expect("Expected To Wait For Command");
+}
+
 pub fn git_add() {
     Command::new("git")
         .arg("add")
