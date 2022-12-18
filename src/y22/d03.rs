@@ -1,8 +1,8 @@
-use super::basics::{lines, path};
+use crate::basics::{lines, path};
 
 pub fn p1() -> u32 {
     let mut sum: u32 = 0;
-    for line in lines(path(3)) {
+    for line in lines(path(22, 3)) {
         let line = line.expect("Expected To Read Line");
         let half = line.len() / 2;
         let mut set: u64 = 0;
@@ -27,7 +27,7 @@ pub fn p2() -> u32 {
     let mut sum: u32 = 0;
     let mut member: u8 = 1;
     let mut union: u64 = 0;
-    for line in lines(path(3)) {
+    for line in lines(path(22, 3)) {
         let line = line.expect("Expected To Read Line");
         let mut set: u64 = 0;
         for char in line.chars() {
