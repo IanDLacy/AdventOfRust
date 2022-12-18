@@ -8,7 +8,7 @@ use std::env;
 
 fn main() {
     match env::args().nth(1).unwrap_or_default().as_str() {
-        "pc" | "cp" => {
+        "acp" => {
             git_add();
             git_commit();
             git_push();
