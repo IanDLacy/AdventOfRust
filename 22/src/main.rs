@@ -1,9 +1,10 @@
 mod basics;
+mod commands;
 mod d01;
 mod d02;
 mod d03;
 
-use crate::basics::*;
+use commands::*;
 use std::env;
 
 fn main() {
