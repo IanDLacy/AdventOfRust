@@ -1,5 +1,6 @@
 pub use std::fs::File;
 pub use std::io::{BufRead, BufReader, Lines, Write};
+use std::process::Command;
 
 pub fn path(day: u8) -> String {
     "./input/".to_owned() + if day < 10 { "0" } else { "" } + day.to_string().as_str() + ".txt"
@@ -14,4 +15,26 @@ pub fn answer(answer: u32) -> usize {
     std::io::stdout()
         .write(answer.as_bytes())
         .expect("Expected To Write To Standard Out")
+}
+
+pub fn commit() {
+    Command::new("git")
+        .arg("add")
+        .arg(".")
+        .spawn()
+        .expect("Expected Command To Run")
+        .wait()
+        .expect("Expected To Wait For Command");
+    Command::new("git")
+        .arg("commit")
+        .spawn()
+        .expect("Expected Command To Run")
+        .wait()
+        .expect("Expected To Wait For Command");
+    Command::new("git")
+        .arg("push")
+        .spawn()
+        .expect("Expected Command To Run")
+        .wait()
+        .expect("Expected To Wait For Command");
 }
