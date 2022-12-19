@@ -28,6 +28,9 @@ fn main() {
         "p" => {
             commands::git_push();
         }
+        "zsh" => {
+            commands::zsh();
+        }
         "1" => {
             commands::answer(y22::d01::p1());
             commands::answer(y22::d01::p2());

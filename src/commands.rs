@@ -1,5 +1,24 @@
+use std::env;
 use std::io::Write;
 use std::process::Command;
+
+pub fn zsh() {
+    let dir = env::current_dir().expect("Expected Current Directory");
+    let dir = dir
+        .to_str()
+        .expect("Expected Successful Cast To String Slice");
+
+    let path =
+        env::var("PATH").expect("Expected Environment Variable") + ":" + dir + "/target/debug";
+
+    env::set_var("PATH", path);
+
+    Command::new("zsh")
+        .spawn()
+        .expect("Expected Command To Run")
+        .wait()
+        .expect("Expected To Wait For Command");
+}
 
 pub fn answer(answer: u32) -> usize {
     let answer = "\n".to_owned() + answer.to_string().as_str() + "\n\n";
