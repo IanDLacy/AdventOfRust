@@ -23,7 +23,7 @@ fn main() {
         }
         "cp" => {
             commands::git_commit();
-            commands::git_commit();
+            commands::git_push();
         }
         "p" => {
             commands::git_push();
