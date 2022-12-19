@@ -12,6 +12,10 @@ fn main() {
         "c" => {
             commands::git_commit();
         }
+        "bc" => {
+            commands::cargo_build();
+            commands::git_commit();
+        }
         "p" => {
             commands::git_push();
         }
