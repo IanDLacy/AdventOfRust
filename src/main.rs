@@ -9,19 +9,23 @@ fn main() {
         "b" => {
             commands::cargo_build();
         }
-        "c" => {
-            commands::git_commit();
-        }
         "bc" => {
             commands::cargo_build();
             commands::git_commit();
         }
-        "p" => {
-            commands::git_push();
-        }
         "bcp" => {
             commands::cargo_build();
             commands::git_commit();
+            commands::git_push();
+        }
+        "c" => {
+            commands::git_commit();
+        }
+        "cp" => {
+            commands::git_commit();
+            commands::git_commit();
+        }
+        "p" => {
             commands::git_push();
         }
         "1" => {
