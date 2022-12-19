@@ -32,16 +32,16 @@ fn main() {
             commands::zsh();
         }
         "1" => {
-            commands::answer(y22::d01::p1());
-            commands::answer(y22::d01::p2());
+            basics::answer(y22::d01::p1());
+            basics::answer(y22::d01::p2());
         }
         "2" => {
-            commands::answer(y22::d02::p1());
-            commands::answer(y22::d02::p2());
+            basics::answer(y22::d02::p1());
+            basics::answer(y22::d02::p2());
         }
         "3" => {
-            commands::answer(y22::d03::p1());
-            commands::answer(y22::d03::p2());
+            basics::answer(y22::d03::p1());
+            basics::answer(y22::d03::p2());
         }
         _ => {}
     }

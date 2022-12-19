@@ -1,5 +1,4 @@
 use std::env;
-use std::io::Write;
 use std::process::Command;
 
 pub fn zsh() {
@@ -18,13 +17,6 @@ pub fn zsh() {
         .expect("Expected Command To Run")
         .wait()
         .expect("Expected To Wait For Command");
-}
-
-pub fn answer(answer: u32) -> usize {
-    let answer = "\n".to_owned() + answer.to_string().as_str() + "\n\n";
-    std::io::stdout()
-        .write(answer.as_bytes())
-        .expect("Expected To Write To Standard Out")
 }
 
 pub fn cargo_build() {
