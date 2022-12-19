@@ -9,6 +9,10 @@ pub fn cargo_build() {
     basics::command("cargo", &["build"]);
 }
 
+pub fn cargo_run() {
+    basics::command("cargo", &["run"]);
+}
+
 pub fn git_commit() {
     basics::command("git", &["add", "."]);
     basics::command("git", &["commit"]);

@@ -28,6 +28,9 @@ fn main() {
         "p" => {
             commands::git_push();
         }
+        "r" => {
+            commands::cargo_run();
+        }
         "zsh" => {
             commands::zsh();
         }
