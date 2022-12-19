@@ -15,7 +15,7 @@ fn elf(lines: &mut Lines<BufReader<File>>) -> u32 {
 }
 
 pub fn p1() -> u32 {
-    let mut lines = lines(path(22, 1));
+    let mut lines = lines(input(22, 1));
     let mut max = 0;
     let mut sum;
     loop {
@@ -30,7 +30,7 @@ pub fn p1() -> u32 {
 }
 
 pub fn p2() -> u32 {
-    let mut lines = lines(path(22, 1));
+    let mut lines = lines(input(22, 1));
     let mut first = 0;
     let mut second = 0;
     let mut third = 0;

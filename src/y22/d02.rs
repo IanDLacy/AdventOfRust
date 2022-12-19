@@ -1,8 +1,8 @@
-use crate::basics::{lines, path};
+use crate::basics::{input, lines};
 
 pub fn p1() -> u32 {
     let mut score: u32 = 0;
-    for line in lines(path(22, 2)) {
+    for line in lines(input(22, 2)) {
         let line = line.expect("Expected To Read Line");
         let mut chars = line.chars();
         score += match (chars.next().unwrap(), chars.last().unwrap()) {
@@ -23,7 +23,7 @@ pub fn p1() -> u32 {
 
 pub fn p2() -> u32 {
     let mut score: u32 = 0;
-    for line in lines(path(22, 2)) {
+    for line in lines(input(22, 2)) {
         let line = line.expect("Expected To Read Line");
         let mut chars = line.chars();
         score += match (chars.next().unwrap(), chars.last().unwrap()) {
