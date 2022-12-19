@@ -13,6 +13,7 @@ pub fn zsh() {
     env::set_var("PATH", path);
 
     Command::new("zsh")
+        .arg("-l")
         .spawn()
         .expect("Expected Command To Run")
         .wait()
