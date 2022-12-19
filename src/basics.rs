@@ -1,5 +1,6 @@
 pub use std::fs::File;
 pub use std::io::{BufRead, BufReader, Lines, Write};
+use std::path::{Path, PathBuf};
 use std::process::Command;
 
 pub fn command(name: &str, args: &[&str]) {
@@ -11,16 +12,17 @@ pub fn command(name: &str, args: &[&str]) {
         .expect("Expected To Wait For Command");
 }
 
-pub fn path(year: u8, day: u8) -> String {
-    "./input/".to_owned()
-        + year.to_string().as_str()
-        + "/"
-        + if day < 10 { "0" } else { "" }
-        + day.to_string().as_str()
-        + ".txt"
+pub fn path(year: u8, day: u8) -> PathBuf {
+    let mut path = PathBuf::from("./input/")
+        .join(year.to_string())
+        .join(Path::new(
+            &(String::from(if day < 10 { "0" } else { "" }) + &day.to_string()),
+        ));
+    path.set_extension("txt");
+    path
 }
 
-pub fn lines(path: String) -> Lines<BufReader<File>> {
+pub fn lines(path: PathBuf) -> Lines<BufReader<File>> {
     BufReader::new(File::open(path).expect("Expected To Open File")).lines()
 }
 
