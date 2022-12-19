@@ -34,17 +34,21 @@ fn main() {
         "zsh" => {
             commands::zsh();
         }
-        "1" => {
+        "2201" => {
             basics::answer(y22::d01::p1());
             basics::answer(y22::d01::p2());
         }
-        "2" => {
+        "2202" => {
             basics::answer(y22::d02::p1());
             basics::answer(y22::d02::p2());
         }
-        "3" => {
+        "2203" => {
             basics::answer(y22::d03::p1());
             basics::answer(y22::d03::p2());
+        }
+        "2204" => {
+            basics::answer(y22::d04::p1());
+            basics::answer(y22::d04::p2());
         }
         _ => {}
     }
