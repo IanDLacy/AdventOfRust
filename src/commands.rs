@@ -1,6 +1,15 @@
 use std::env;
 use std::process::Command;
 
+pub fn command(name: &str, args: &[&str]) {
+    Command::new(name)
+        .args(args)
+        .spawn()
+        .expect("Expected Command To Run")
+        .wait()
+        .expect("Expected To Wait For Command");
+}
+
 pub fn zsh() {
     let dir = env::current_dir().expect("Expected Current Directory");
     let dir = dir
@@ -12,44 +21,18 @@ pub fn zsh() {
 
     env::set_var("PATH", path);
 
-    Command::new("zsh")
-        .arg("-l")
-        .spawn()
-        .expect("Expected Command To Run")
-        .wait()
-        .expect("Expected To Wait For Command");
+    command("zsh", &["-l"]);
 }
 
 pub fn cargo_build() {
-    Command::new("cargo")
-        .arg("build")
-        .spawn()
-        .expect("Expected Command To Run")
-        .wait()
-        .expect("Expected To Wait For Command");
+    command("cargo", &["build"]);
 }
 
 pub fn git_commit() {
-    Command::new("git")
-        .arg("add")
-        .arg(".")
-        .spawn()
-        .expect("Expected Command To Run")
-        .wait()
-        .expect("Expected To Wait For Command");
-    Command::new("git")
-        .arg("commit")
-        .spawn()
-        .expect("Expected Command To Run")
-        .wait()
-        .expect("Expected To Wait For Command");
+    command("git", &["add", "."]);
+    command("git", &["commit"]);
 }
 
 pub fn git_push() {
-    Command::new("git")
-        .arg("push")
-        .spawn()
-        .expect("Expected Command To Run")
-        .wait()
-        .expect("Expected To Wait For Command");
+    command("git", &["push"]);
 }
