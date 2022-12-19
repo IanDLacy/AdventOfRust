@@ -1,5 +1,15 @@
 pub use std::fs::File;
 pub use std::io::{BufRead, BufReader, Lines, Write};
+use std::process::Command;
+
+pub fn command(name: &str, args: &[&str]) {
+    Command::new(name)
+        .args(args)
+        .spawn()
+        .expect("Expected Command To Run")
+        .wait()
+        .expect("Expected To Wait For Command");
+}
 
 pub fn path(year: u8, day: u8) -> String {
     "./input/".to_owned()

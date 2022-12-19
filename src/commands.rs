@@ -1,14 +1,6 @@
 use std::env;
-use std::process::Command;
 
-pub fn command(name: &str, args: &[&str]) {
-    Command::new(name)
-        .args(args)
-        .spawn()
-        .expect("Expected Command To Run")
-        .wait()
-        .expect("Expected To Wait For Command");
-}
+use super::basics;
 
 pub fn zsh() {
     let dir = env::current_dir().expect("Expected Current Directory");
@@ -21,18 +13,18 @@ pub fn zsh() {
 
     env::set_var("PATH", path);
 
-    command("zsh", &["-l"]);
+    basics::command("zsh", &["-l"]);
 }
 
 pub fn cargo_build() {
-    command("cargo", &["build"]);
+    basics::command("cargo", &["build"]);
 }
 
 pub fn git_commit() {
-    command("git", &["add", "."]);
-    command("git", &["commit"]);
+    basics::command("git", &["add", "."]);
+    basics::command("git", &["commit"]);
 }
 
 pub fn git_push() {
-    command("git", &["push"]);
+    basics::command("git", &["push"]);
 }
