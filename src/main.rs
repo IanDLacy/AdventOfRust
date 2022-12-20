@@ -54,6 +54,10 @@ fn main() {
             basics::answer(y22::d05::p1());
             basics::answer(y22::d05::p2());
         }
+        "2206" => {
+            basics::answer(y22::d06::p1());
+            basics::answer(y22::d06::p2());
+        }
         _ => {}
     }
 }
