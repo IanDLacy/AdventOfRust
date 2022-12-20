@@ -1,6 +1,6 @@
 use crate::basics::{input, lines};
 
-pub fn p1() -> u32 {
+pub fn p1() -> String {
     let mut sum: u32 = 0;
     for line in lines(input(22, 3)) {
         let line = line.expect("Expected To Read Line");
@@ -20,10 +20,10 @@ pub fn p1() -> u32 {
             }
         }
     }
-    sum
+    sum.to_string()
 }
 
-pub fn p2() -> u32 {
+pub fn p2() -> String {
     let mut sum: u32 = 0;
     let mut member: u8 = 1;
     let mut union: u64 = 0;
@@ -48,5 +48,5 @@ pub fn p2() -> u32 {
         }
         member = if member < 3 { member + 1 } else { 1 };
     }
-    sum
+    sum.to_string()
 }

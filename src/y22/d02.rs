@@ -1,6 +1,6 @@
 use crate::basics::{input, lines};
 
-pub fn p1() -> u32 {
+pub fn p1() -> String {
     let mut score: u32 = 0;
     for line in lines(input(22, 2)) {
         let line = line.expect("Expected To Read Line");
@@ -18,10 +18,10 @@ pub fn p1() -> u32 {
             _ => 0,
         }
     }
-    score
+    score.to_string()
 }
 
-pub fn p2() -> u32 {
+pub fn p2() -> String {
     let mut score: u32 = 0;
     for line in lines(input(22, 2)) {
         let line = line.expect("Expected To Read Line");
@@ -39,5 +39,5 @@ pub fn p2() -> u32 {
             _ => 0,
         }
     }
-    score
+    score.to_string()
 }
