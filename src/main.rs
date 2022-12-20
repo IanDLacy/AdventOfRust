@@ -35,20 +35,20 @@ fn main() {
             commands::zsh();
         }
         "2201" => {
-            basics::answer(y22::d01::p1());
-            basics::answer(y22::d01::p2());
+            basics::answer(y22::d01::p1().to_string());
+            basics::answer(y22::d01::p2().to_string());
         }
         "2202" => {
-            basics::answer(y22::d02::p1());
-            basics::answer(y22::d02::p2());
+            basics::answer(y22::d02::p1().to_string());
+            basics::answer(y22::d02::p2().to_string());
         }
         "2203" => {
-            basics::answer(y22::d03::p1());
-            basics::answer(y22::d03::p2());
+            basics::answer(y22::d03::p1().to_string());
+            basics::answer(y22::d03::p2().to_string());
         }
         "2204" => {
-            basics::answer(y22::d04::p1());
-            basics::answer(y22::d04::p2());
+            basics::answer(y22::d04::p1().to_string());
+            basics::answer(y22::d04::p2().to_string());
         }
         "2205" => {
             basics::answer(y22::d05::p1());

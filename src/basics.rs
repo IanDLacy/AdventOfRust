@@ -41,8 +41,8 @@ pub fn lines(path: PathBuf) -> Lines<BufReader<File>> {
     BufReader::new(File::open(path).expect("Expected To Open File")).lines()
 }
 
-pub fn answer(answer: u32) -> usize {
-    let answer = "\n".to_owned() + answer.to_string().as_str() + "\n\n";
+pub fn answer(answer: String) -> usize {
+    let answer = "\n".to_owned() + answer.as_str() + "\n\n";
     std::io::stdout()
         .write(answer.as_bytes())
         .expect("Expected To Write To Standard Out")
