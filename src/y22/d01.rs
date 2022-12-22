@@ -1,4 +1,6 @@
-use crate::basics::*;
+use crate::basics::{input, lines};
+use std::fs::File;
+use std::io::{BufReader, Lines};
 
 fn elf(lines: &mut Lines<BufReader<File>>) -> u32 {
     let mut sum = 0;
