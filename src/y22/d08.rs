@@ -71,8 +71,8 @@ pub fn p1() -> String {
     look(cols(look(rows())))
         .iter()
         .flatten()
-        .map(|tree| if tree.visible { 1 } else { 0 })
-        .sum::<u32>()
+        .filter(|i| i.visible)
+        .count()
         .to_string()
 }
 
