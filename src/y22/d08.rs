@@ -1,8 +1,9 @@
 use crate::basics::{input, lines};
 
 struct Tree {
-    visible: bool,
     height: u8,
+    visible: bool,
+    score: u32,
 }
 
 fn rows() -> Vec<Vec<Tree>> {
@@ -12,8 +13,9 @@ fn rows() -> Vec<Vec<Tree>> {
         let line = line.expect("Expected To Read Line");
         for char in line.chars() {
             rows[row].push(Tree {
-                visible: false,
                 height: char.to_digit(10).unwrap() as u8,
+                visible: false,
+                score: 1,
             })
         }
     }
@@ -28,32 +30,13 @@ fn cols(rows: Vec<Vec<Tree>>) -> Vec<Vec<Tree>> {
                 cols.push(Vec::new());
             }
             cols[col].push(Tree {
-                visible: tree.visible,
                 height: tree.height,
+                visible: tree.visible,
+                score: tree.score,
             });
         }
     }
     cols
-}
-
-fn scan(trees: Vec<Tree>) -> Vec<Tree> {
-    let mut scanned: Vec<Tree> = Vec::new();
-    let mut max: u8 = 0;
-    for tree in trees {
-        if tree.height + 1 > max {
-            max = tree.height + 1;
-            scanned.push(Tree {
-                visible: true,
-                height: tree.height,
-            });
-        } else {
-            scanned.push(Tree {
-                visible: tree.visible,
-                height: tree.height,
-            });
-        }
-    }
-    scanned
 }
 
 fn look(vec: Vec<Vec<Tree>>) -> Vec<Vec<Tree>> {
@@ -67,6 +50,33 @@ fn look(vec: Vec<Vec<Tree>>) -> Vec<Vec<Tree>> {
     looked
 }
 
+fn scan(trees: Vec<Tree>) -> Vec<Tree> {
+    let mut scanned: Vec<Tree> = Vec::new();
+    let mut history: [usize; 10] = [0; 10];
+    for (index, tree) in trees.iter().enumerate() {
+        let mut pushee = Tree {
+            height: tree.height,
+            visible: tree.visible,
+            score: tree.score,
+        };
+        let shift: usize;
+        if history[tree.height as usize] == 0 {
+            pushee.visible = true;
+            shift = 0;
+        } else {
+            shift = 1;
+        }
+        pushee.score *= (index + shift - history[tree.height as usize]) as u32;
+        for (height, _) in history.into_iter().enumerate() {
+            if height <= tree.height as usize {
+                history[height] = index + 1;
+            }
+        }
+        scanned.push(pushee);
+    }
+    scanned
+}
+
 pub fn p1() -> String {
     look(cols(look(rows())))
         .iter()
@@ -77,8 +87,11 @@ pub fn p1() -> String {
 }
 
 pub fn p2() -> String {
-    for line in lines(input(22, 8)) {
-        line.expect("Expected To Read Line");
-    }
-    "answer".to_owned()
+    look(cols(look(rows())))
+        .iter()
+        .flatten()
+        .map(|i| i.score)
+        .max()
+        .unwrap()
+        .to_string()
 }
